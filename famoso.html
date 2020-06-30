@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="imagem/ico" href="/imgs/ico.ico" />
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Breaking News</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"></a>
+        <a href="index.html"><img class="logo" src="imgs/logo.portal.jpg" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+          <ul class="navbar-nav m-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="saude.html">Saúde</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="famoso.html">Famosos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="musica.html">Música</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="game.html">Jogos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tecnologia.html">Tecnologia</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+<h1 class="principal text-center">Famosos</h1>
+
+<main class="container main">
+  <div class="row">
+    <div class="col-xs-10 col-lg-10 col-sm-12" id="card-noticias">
+      <div class="card-deck">
+        <div class="card">
+        </div>
+
+        <div class="card">
+        </div>
+
+        <div class="card">
+        </div>
+
+      </div>
+    </div>
+</main>
+
+<footer class="text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Breaking News - Todos os direitos reservados - 2020.</p>
+        </div>
+       </div>
+     </div>
+  </div>
+</footer>
+
+  <!-- JavaScript (Opcional) -->
+  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script>
+
+    const API_KEY = '087043a0a9aa47ac8fc48521b0fef403';
+
+
+    function exibeNoticias() {
+      let divTela = document.getElementById('card-noticias');
+      let card = '';
+
+      // Montar texto HTML das noticias
+      let dados = JSON.parse(this.responseText);
+      for (i = 0; i < dados.articles.length; i++) {
+        let noticia = dados.articles[i];
+        let data = new Date(noticia.publishedAt);
+
+        if (noticia.urlToImage != null && noticia.title != null && data != null
+                              && noticia.source.name != null && noticia.author != null
+                              && noticia.content != null && noticia.url != null)
+        card = card + `
+        <div class="card border-warning col-12">
+                        <div class="card-header col-12">
+                            <img src="${noticia.urlToImage}" alt="">
+                            <h3 class="titulo">${noticia.title}</h3><br>
+                            <span class="creditos">${data.toLocaleDateString()} - 
+                                ${noticia.source.name} - ${noticia.author}
+                            </span>
+                        </div>
+                        <div class="card-body col-12">
+                            <span class="text">
+                                ${noticia.content}
+                            </span><br>
+                            <a href="${noticia.url}" class="btn btn-primary" target="_blank">Leia mais ...</a>
+                        </div>
+                    </div>
+                    
+        `;
+      };
+
+      // Preencher a DIV com o card HTML
+      divTela.innerHTML = card;
+    }
+      onload =()=>{
+        let xhr = new XMLHttpRequest();
+      xhr.onload = exibeNoticias;
+      xhr.open('GET', `https://newsapi.org/v2/everything?q=fofoca&language=pt&apiKey=${API_KEY}
+`);
+      xhr.send();
+      }
+
+  </script>
+</body>
+</html>

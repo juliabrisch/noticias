@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="imagem/ico" href="/imgs/ico.ico" />
+  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Breaking News</title>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"></a>
+        <a href="index.html"><img class="logo" src="imgs/logo.portal.jpg" alt=""></a> <button class="navbar-toggler"
+          type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+          <ul class="navbar-nav m-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="saude.html">Saúde</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="famoso.html">Famosos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="musica.html">Música</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="game.html">Jogos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tecnologia.html">Tecnologia</a>
+            </li>
+          </ul>
+
+          <form class="form-inline my-2 my-lg-0" autocomplete="on">
+            <div class="input-group input-group-sm">
+              <input type="text" id="txtPesquisa" class="form-control" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Pesquisar">
+              <div class="input-group-append">
+                <button type="button" id="btnPesquisa" class="btn btn-secondary btn-number"><img
+                    src="https://img.icons8.com/cotton/25/000000/detective.png" />
+
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+</header>
+  <div class="alert alert-warning text-center" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  <p>Não esqueça de colocar <strong>LOCALHOST</strong> - http://localhost:5500/index.html</p> 
+    <p>Qualquer dúvida me chame no whatsaap - <strong>(31) 9 9916-1483</strong></p>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <h1 id="titulo-noticia" class="principal text-center">Notícias Principais</h1>
+    <button id="btn-salvar" class="btn btn-warning ml-5 btn-sumir" data-toggle="modal" data-target="#myModal"
+      style="height: 50px;">Salvar</button>
+  </div>
+
+  <main class="container main">
+    <div class="row">
+      <div class="col-xs-10 col-lg-10 col-sm-12" id="card-noticias">
+        <div class="card-deck">
+          <div class="card">
+          </div>
+  
+          <div class="card">
+          </div>
+  
+          <div class="card">
+          </div>
+  
+    </div>
+ </div>
+
+<div class="col-2 lista-vertical" id="lista">
+     <div>
+        <ul id="lista-pesquisa">
+           <h2 class="pesquisa">Pesquisas Salvas</h2>
+        </ul>
+        </div>
+      </div>
+    </div>
+</main>
+
+  <div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" style="width: 100%;">Pesquisas salvas</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" id="basic-addon1">Título do menu:</label>
+            </div>
+            <input id="titulo-menu" type="text" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" id="basic-addon1">Texto de pesquisa:</label>
+            </div>
+            <input id="texto-pesquisa" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="salvarPesquisa()" data-dismiss="modal">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Breaking News - Todos os direitos reservados - 2020.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript (Opcional) -->
+  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script>
+
+    const API_KEY = '087043a0a9aa47ac8fc48521b0fef403';
+    let pesquisas = [];
+
+    function exibeNoticias() {
+      let divTela = document.getElementById('card-noticias');
+      let card = '';
+
+      // Montar texto HTML das noticias
+      let dados = JSON.parse(this.responseText);
+      for (i = 0; i < dados.articles.length; i++) {
+        let noticia = dados.articles[i];
+        let data = new Date(noticia.publishedAt);
+
+        if (noticia.urlToImage != null && noticia.title != null && data != null
+          && noticia.source.name != null && noticia.author != null
+          && noticia.content != null && noticia.url != null)
+          card = card + `
+        <div class="card border-warning col-12">
+                        <div class="card-header col-12">
+                            <img src="${noticia.urlToImage}" alt="">
+                            <h3 class="titulo">${noticia.title}</h3><br>
+                            <span class="creditos">${data.toLocaleDateString()} - 
+                                ${noticia.source.name} - ${noticia.author}
+                            </span>
+                        </div>
+                        <div class="card-body col-12">
+                            <span class="text">
+                                ${noticia.content}
+                            </span><br>
+                            <a href="${noticia.url}" class="btn btn-primary" target="_blank">Leia mais ...</a>
+                        </div>
+                    </div>
+                    
+        `;
+      };
+
+      // Preencher a DIV com o card HTML
+      divTela.innerHTML = card;
+    }
+    onload = () => {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = exibeNoticias;
+      xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=br&language=pt&apiKey=${API_KEY}`);
+      xhr.send();
+
+      carregarPesquisas();
+    }
+
+    function executaPesquisa() {
+      let query = document.getElementById('txtPesquisa').value;
+
+      let xhr = new XMLHttpRequest();
+      xhr.onload = exibeNoticias;
+      xhr.open('GET', `https://newsapi.org/v2/everything?q=${query}&language=pt&apiKey=${API_KEY}`);
+      xhr.send();
+
+      document.getElementById('titulo-noticia').innerText = `Pesquisa: ${query}`;
+      document.getElementById('btn-salvar').classList.remove('btn-sumir');
+    };
+
+    function recuperarPesquisa(value) {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = exibeNoticias;
+      xhr.open('GET', `https://newsapi.org/v2/everything?q=${value}&language=pt&apiKey=${API_KEY}`);
+      xhr.send();
+
+      document.getElementById('titulo-noticia').innerText = `Pesquisa: ${value}`;
+      document.getElementById('btn-salvar').classList.remove('btn-sumir');
+    };
+
+    function salvarPesquisa() {
+      const tituloMenu = document.getElementById('titulo-menu').value;
+      const textoPesquisa = document.getElementById('texto-pesquisa').value;
+
+      pesquisas.push({ tituloMenu, textoPesquisa });
+      localStorage.setItem('pesquisas', JSON.stringify(pesquisas));
+
+      window.location.reload(false);
+    }
+
+    function carregarPesquisas() {
+      pesquisas = JSON.parse(localStorage.getItem("pesquisas")).slice(-5);
+
+      const menuPesquisa = document.getElementById('lista-pesquisa');
+
+      pesquisas.forEach(pesquisa => {
+        menuPesquisa.innerHTML += `<li><button onclick='recuperarPesquisa("${pesquisa.tituloMenu}")'>${pesquisa.textoPesquisa}</button></li>`;
+      });
+    }
+
+    document.getElementById('btnPesquisa').addEventListener('click', executaPesquisa);
+
+  </script>
+</body>
+
+</html>
